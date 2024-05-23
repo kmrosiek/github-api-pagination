@@ -53,11 +53,15 @@ class _RepositorySearchContentState extends State<RepositorySearchContent>
                                 padding: const EdgeInsets.all(16.0),
                                 child: state.isLoading
                                     ? const LoadingBorderRepositoryCard()
-                                    : RepositoryCard(
-                                        repositoryData:
-                                            repositoryExample, //TODO replace
-                                        cardAnimationDelay:
-                                            index < 5 ? index * 100 : 0),
+                                    : Hero(
+                                        tag: 'hero_$index',
+                                        child: RepositoryCard(
+                                            index: index,
+                                            repositoryData:
+                                                repositoryExample, //TODO replace
+                                            cardAnimationDelay:
+                                                index < 5 ? index * 100 : 0),
+                                      ),
                               );
                             })
                           ]))),

@@ -8,10 +8,12 @@ class StarsAndForksStats extends StatelessWidget
       {super.key,
       required this.starsCount,
       required this.forksCount,
-      required this.cardAnimationDelay});
+      required this.cardAnimationDelay,
+      required this.stoppedAnimation});
   final int starsCount;
   final int forksCount;
   final int cardAnimationDelay;
+  final bool stoppedAnimation;
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +21,14 @@ class StarsAndForksStats extends StatelessWidget
       children: [
         imageAnimation(
             delay: getDelayDuration(150, sharedDelay: cardAnimationDelay),
+            stoppedAnimation: stoppedAnimation,
             child: const Icon(FontAwesomeIcons.star, size: 16.0)),
         const SizedBox(width: 4.0),
         Text(starsCount.toString()),
         const SizedBox(width: 16.0),
         imageAnimation(
             delay: getDelayDuration(200, sharedDelay: cardAnimationDelay),
+            stoppedAnimation: stoppedAnimation,
             child: const Icon(FontAwesomeIcons.codeFork, size: 16.0)),
         const SizedBox(width: 4.0),
         Text(forksCount.toString()),

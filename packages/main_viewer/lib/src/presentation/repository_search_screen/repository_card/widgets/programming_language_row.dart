@@ -8,16 +8,19 @@ class ProgrammingLanguageRow extends StatelessWidget
       {super.key,
       required this.userAvatarUrl,
       required this.programmingLanguageName,
-      required this.cardAnimationDelay});
+      required this.cardAnimationDelay,
+      required this.stoppedAnimation});
   final String userAvatarUrl; //TODO remove probably
   final String programmingLanguageName;
   final int cardAnimationDelay;
+  final bool stoppedAnimation;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         imageAnimation(
+          stoppedAnimation: stoppedAnimation,
           delay: getDelayDuration(100, sharedDelay: cardAnimationDelay),
           child: SvgPicture.network(
             'https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/94e9ce8064716dcae11787102e6f35e10aa77246/icons/javascript.svg',
@@ -27,8 +30,9 @@ class ProgrammingLanguageRow extends StatelessWidget
         ),
         const SizedBox(width: 8.0),
         textAnimation(
-            child: Text(programmingLanguageName),
-            delay: getDelayDuration(150, sharedDelay: cardAnimationDelay)),
+            stoppedAnimation: stoppedAnimation,
+            delay: getDelayDuration(150, sharedDelay: cardAnimationDelay),
+            child: Text(programmingLanguageName))
       ],
     );
   }

@@ -13,7 +13,8 @@ class RepositorySearchTextField extends StatefulWidget {
 }
 
 class _RepositorySearchTextFieldState extends State<RepositorySearchTextField> {
-  final TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController =
+      TextEditingController(text: 'hello');
   String? _lastSearchPhrase = "";
   Timer? _preventTooFrequentSearch;
   static const Duration _timeToWaitAfterKeyPressed =
@@ -54,7 +55,9 @@ class _RepositorySearchTextFieldState extends State<RepositorySearchTextField> {
         padding: const EdgeInsets.only(top: 0.0),
         child: TextField(
           controller: _searchController,
-          onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+          onTapOutside: (_) {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           decoration: InputDecoration(
             hintText: 'Search Repositories',
             border:
