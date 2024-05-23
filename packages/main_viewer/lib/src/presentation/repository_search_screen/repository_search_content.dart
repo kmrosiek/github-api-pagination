@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:main_viewer/src/application/cubit/repository_search_cubit.dart';
+import 'package:main_viewer/src/domain/repository_data/repository_data.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/loading_border_repository_card.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/repository_card.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/widgets/animated_github_logo.dart';
@@ -53,8 +54,10 @@ class _RepositorySearchContentState extends State<RepositorySearchContent>
                                 child: state.isLoading
                                     ? const LoadingBorderRepositoryCard()
                                     : RepositoryCard(
-                                        delayBase:
-                                            index < 5 ? index * 100 : 0.0),
+                                        repositoryData:
+                                            repositoryExample, //TODO replace
+                                        cardAnimationDelay:
+                                            index < 5 ? index * 100 : 0),
                               );
                             })
                           ]))),

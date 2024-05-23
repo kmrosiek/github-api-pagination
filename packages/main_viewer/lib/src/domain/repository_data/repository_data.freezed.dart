@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RepositoryData {
   String get repositoryName => throw _privateConstructorUsedError;
   String get programmingLanguage => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   int get stars => throw _privateConstructorUsedError;
   int get forks => throw _privateConstructorUsedError;
   String get ownerName => throw _privateConstructorUsedError;
@@ -37,6 +38,7 @@ abstract class $RepositoryDataCopyWith<$Res> {
   $Res call(
       {String repositoryName,
       String programmingLanguage,
+      String description,
       int stars,
       int forks,
       String ownerName,
@@ -58,6 +60,7 @@ class _$RepositoryDataCopyWithImpl<$Res, $Val extends RepositoryData>
   $Res call({
     Object? repositoryName = null,
     Object? programmingLanguage = null,
+    Object? description = null,
     Object? stars = null,
     Object? forks = null,
     Object? ownerName = null,
@@ -71,6 +74,10 @@ class _$RepositoryDataCopyWithImpl<$Res, $Val extends RepositoryData>
       programmingLanguage: null == programmingLanguage
           ? _value.programmingLanguage
           : programmingLanguage // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
       stars: null == stars
           ? _value.stars
@@ -103,6 +110,7 @@ abstract class _$$RepositoryDataImplCopyWith<$Res>
   $Res call(
       {String repositoryName,
       String programmingLanguage,
+      String description,
       int stars,
       int forks,
       String ownerName,
@@ -122,6 +130,7 @@ class __$$RepositoryDataImplCopyWithImpl<$Res>
   $Res call({
     Object? repositoryName = null,
     Object? programmingLanguage = null,
+    Object? description = null,
     Object? stars = null,
     Object? forks = null,
     Object? ownerName = null,
@@ -135,6 +144,10 @@ class __$$RepositoryDataImplCopyWithImpl<$Res>
       programmingLanguage: null == programmingLanguage
           ? _value.programmingLanguage
           : programmingLanguage // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
       stars: null == stars
           ? _value.stars
@@ -162,6 +175,7 @@ class _$RepositoryDataImpl implements _RepositoryData {
   const _$RepositoryDataImpl(
       {required this.repositoryName,
       required this.programmingLanguage,
+      required this.description,
       required this.stars,
       required this.forks,
       required this.ownerName,
@@ -171,6 +185,8 @@ class _$RepositoryDataImpl implements _RepositoryData {
   final String repositoryName;
   @override
   final String programmingLanguage;
+  @override
+  final String description;
   @override
   final int stars;
   @override
@@ -182,7 +198,7 @@ class _$RepositoryDataImpl implements _RepositoryData {
 
   @override
   String toString() {
-    return 'RepositoryData(repositoryName: $repositoryName, programmingLanguage: $programmingLanguage, stars: $stars, forks: $forks, ownerName: $ownerName, ownerAvatarUrl: $ownerAvatarUrl)';
+    return 'RepositoryData(repositoryName: $repositoryName, programmingLanguage: $programmingLanguage, description: $description, stars: $stars, forks: $forks, ownerName: $ownerName, ownerAvatarUrl: $ownerAvatarUrl)';
   }
 
   @override
@@ -194,6 +210,8 @@ class _$RepositoryDataImpl implements _RepositoryData {
                 other.repositoryName == repositoryName) &&
             (identical(other.programmingLanguage, programmingLanguage) ||
                 other.programmingLanguage == programmingLanguage) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.stars, stars) || other.stars == stars) &&
             (identical(other.forks, forks) || other.forks == forks) &&
             (identical(other.ownerName, ownerName) ||
@@ -203,8 +221,15 @@ class _$RepositoryDataImpl implements _RepositoryData {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, repositoryName,
-      programmingLanguage, stars, forks, ownerName, ownerAvatarUrl);
+  int get hashCode => Object.hash(
+      runtimeType,
+      repositoryName,
+      programmingLanguage,
+      description,
+      stars,
+      forks,
+      ownerName,
+      ownerAvatarUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -218,6 +243,7 @@ abstract class _RepositoryData implements RepositoryData {
   const factory _RepositoryData(
       {required final String repositoryName,
       required final String programmingLanguage,
+      required final String description,
       required final int stars,
       required final int forks,
       required final String ownerName,
@@ -227,6 +253,8 @@ abstract class _RepositoryData implements RepositoryData {
   String get repositoryName;
   @override
   String get programmingLanguage;
+  @override
+  String get description;
   @override
   int get stars;
   @override
