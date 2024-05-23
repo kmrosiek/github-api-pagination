@@ -1,6 +1,6 @@
 name: github_viewer
 description: "Mobile app demonstrating Github API usage"
-publish_to: "none" # Remove this line if you wish to publish to pub.dev
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -8,16 +8,16 @@ environment:
   sdk: ">=3.4.0 <4.0.0"
 
 dependencies:
+  cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
-
-  cupertino_icons: ^1.0.6
+  main_viewer:
+    path: packages/main_viewer
 
 dev_dependencies:
+  flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
-
-  flutter_lints: ^3.0.0
 
 flutter:
   uses-material-design: true
