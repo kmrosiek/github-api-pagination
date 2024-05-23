@@ -10,6 +10,7 @@ environment:
 dependencies:
   animate_do: ^3.3.4
   animated_loading_border: ^0.0.2
+  async: ^2.11.0
   bloc: ^8.1.4
   common:
     path: ../common

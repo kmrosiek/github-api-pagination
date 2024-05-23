@@ -1,11 +1,15 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
 class TitleOrNoOfFoundRepositoriesText extends StatelessWidget {
-  const TitleOrNoOfFoundRepositoriesText({super.key, required this.showTitle});
-  final bool showTitle;
+  const TitleOrNoOfFoundRepositoriesText(
+      {super.key, required this.noOfFoundReposOrNothing});
+  final Option<int> noOfFoundReposOrNothing;
 
   @override
   Widget build(BuildContext context) {
+    final text = noOfFoundReposOrNothing.fold(() => 'GitHub',
+        (noOfFoundRepos) => '$noOfFoundRepos repositories found');
     return SizedBox(
       height: 45,
       child: Center(
@@ -17,13 +21,12 @@ class TitleOrNoOfFoundRepositoriesText extends StatelessWidget {
               child: child,
             );
           },
-          child: Text(
-            showTitle ? 'GitHub' : '14 repositories found',
-            key: ValueKey(showTitle),
-            style: TextStyle(
-                fontSize: showTitle ? 30 : 20,
-                fontWeight: showTitle ? FontWeight.bold : FontWeight.normal),
-          ),
+          child: Text(text,
+              key: ValueKey(text),
+              style: TextStyle(
+                  fontSize: noOfFoundReposOrNothing.fold(() => 30, (_) => 20),
+                  fontWeight: noOfFoundReposOrNothing.fold(
+                      () => FontWeight.bold, (_) => FontWeight.normal))),
         ),
       ),
     );

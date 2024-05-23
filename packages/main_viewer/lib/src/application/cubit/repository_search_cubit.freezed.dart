@@ -17,7 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$RepositorySearchState {
   bool get isLoading => throw _privateConstructorUsedError;
-  Option<Either<Failure, List<RepositoryData>>> get failureDataOrNothing =>
+  bool get notEnoughCharsToSearch => throw _privateConstructorUsedError;
+  Option<Either<Failure, List<RepositoryData>>> get dataFailureOrNothing =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -33,7 +34,8 @@ abstract class $RepositorySearchStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
-      Option<Either<Failure, List<RepositoryData>>> failureDataOrNothing});
+      bool notEnoughCharsToSearch,
+      Option<Either<Failure, List<RepositoryData>>> dataFailureOrNothing});
 }
 
 /// @nodoc
@@ -51,16 +53,21 @@ class _$RepositorySearchStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? isLoading = null,
-    Object? failureDataOrNothing = null,
+    Object? notEnoughCharsToSearch = null,
+    Object? dataFailureOrNothing = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      failureDataOrNothing: null == failureDataOrNothing
-          ? _value.failureDataOrNothing
-          : failureDataOrNothing // ignore: cast_nullable_to_non_nullable
+      notEnoughCharsToSearch: null == notEnoughCharsToSearch
+          ? _value.notEnoughCharsToSearch
+          : notEnoughCharsToSearch // ignore: cast_nullable_to_non_nullable
+              as bool,
+      dataFailureOrNothing: null == dataFailureOrNothing
+          ? _value.dataFailureOrNothing
+          : dataFailureOrNothing // ignore: cast_nullable_to_non_nullable
               as Option<Either<Failure, List<RepositoryData>>>,
     ) as $Val);
   }
@@ -77,7 +84,8 @@ abstract class _$$RepositorySearchStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
-      Option<Either<Failure, List<RepositoryData>>> failureDataOrNothing});
+      bool notEnoughCharsToSearch,
+      Option<Either<Failure, List<RepositoryData>>> dataFailureOrNothing});
 }
 
 /// @nodoc
@@ -93,16 +101,21 @@ class __$$RepositorySearchStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? failureDataOrNothing = null,
+    Object? notEnoughCharsToSearch = null,
+    Object? dataFailureOrNothing = null,
   }) {
     return _then(_$RepositorySearchStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      failureDataOrNothing: null == failureDataOrNothing
-          ? _value.failureDataOrNothing
-          : failureDataOrNothing // ignore: cast_nullable_to_non_nullable
+      notEnoughCharsToSearch: null == notEnoughCharsToSearch
+          ? _value.notEnoughCharsToSearch
+          : notEnoughCharsToSearch // ignore: cast_nullable_to_non_nullable
+              as bool,
+      dataFailureOrNothing: null == dataFailureOrNothing
+          ? _value.dataFailureOrNothing
+          : dataFailureOrNothing // ignore: cast_nullable_to_non_nullable
               as Option<Either<Failure, List<RepositoryData>>>,
     ));
   }
@@ -110,18 +123,23 @@ class __$$RepositorySearchStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RepositorySearchStateImpl implements _RepositorySearchState {
+class _$RepositorySearchStateImpl extends _RepositorySearchState {
   const _$RepositorySearchStateImpl(
-      {required this.isLoading, required this.failureDataOrNothing});
+      {required this.isLoading,
+      required this.notEnoughCharsToSearch,
+      required this.dataFailureOrNothing})
+      : super._();
 
   @override
   final bool isLoading;
   @override
-  final Option<Either<Failure, List<RepositoryData>>> failureDataOrNothing;
+  final bool notEnoughCharsToSearch;
+  @override
+  final Option<Either<Failure, List<RepositoryData>>> dataFailureOrNothing;
 
   @override
   String toString() {
-    return 'RepositorySearchState(isLoading: $isLoading, failureDataOrNothing: $failureDataOrNothing)';
+    return 'RepositorySearchState(isLoading: $isLoading, notEnoughCharsToSearch: $notEnoughCharsToSearch, dataFailureOrNothing: $dataFailureOrNothing)';
   }
 
   @override
@@ -131,12 +149,15 @@ class _$RepositorySearchStateImpl implements _RepositorySearchState {
             other is _$RepositorySearchStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.failureDataOrNothing, failureDataOrNothing) ||
-                other.failureDataOrNothing == failureDataOrNothing));
+            (identical(other.notEnoughCharsToSearch, notEnoughCharsToSearch) ||
+                other.notEnoughCharsToSearch == notEnoughCharsToSearch) &&
+            (identical(other.dataFailureOrNothing, dataFailureOrNothing) ||
+                other.dataFailureOrNothing == dataFailureOrNothing));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, failureDataOrNothing);
+  int get hashCode => Object.hash(
+      runtimeType, isLoading, notEnoughCharsToSearch, dataFailureOrNothing);
 
   @JsonKey(ignore: true)
   @override
@@ -146,16 +167,20 @@ class _$RepositorySearchStateImpl implements _RepositorySearchState {
           _$RepositorySearchStateImpl>(this, _$identity);
 }
 
-abstract class _RepositorySearchState implements RepositorySearchState {
+abstract class _RepositorySearchState extends RepositorySearchState {
   const factory _RepositorySearchState(
       {required final bool isLoading,
+      required final bool notEnoughCharsToSearch,
       required final Option<Either<Failure, List<RepositoryData>>>
-          failureDataOrNothing}) = _$RepositorySearchStateImpl;
+          dataFailureOrNothing}) = _$RepositorySearchStateImpl;
+  const _RepositorySearchState._() : super._();
 
   @override
   bool get isLoading;
   @override
-  Option<Either<Failure, List<RepositoryData>>> get failureDataOrNothing;
+  bool get notEnoughCharsToSearch;
+  @override
+  Option<Either<Failure, List<RepositoryData>>> get dataFailureOrNothing;
   @override
   @JsonKey(ignore: true)
   _$$RepositorySearchStateImplCopyWith<_$RepositorySearchStateImpl>

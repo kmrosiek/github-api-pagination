@@ -13,3 +13,11 @@ abstract class RepositoryData with _$RepositoryData {
     required String ownerAvatarUrl,
   }) = _RepositoryData;
 }
+
+const repositoryExample = RepositoryData(
+    repositoryName: 'Repo name',
+    programmingLanguage: 'javascript',
+    stars: 5,
+    forks: 2,
+    ownerName: 'alek',
+    ownerAvatarUrl: 'asd');
