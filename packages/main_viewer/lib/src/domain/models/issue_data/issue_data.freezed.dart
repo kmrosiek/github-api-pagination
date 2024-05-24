@@ -17,7 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$IssueData {
   String get title => throw _privateConstructorUsedError;
-  String get subtitle => throw _privateConstructorUsedError;
+  @Deprecated('subtitle is currenly not used')
+  String? get subtitle => throw _privateConstructorUsedError;
   String get userAvatarUrl => throw _privateConstructorUsedError;
   String get userLogin => throw _privateConstructorUsedError;
   List<IssueLabel> get labels => throw _privateConstructorUsedError;
@@ -35,7 +36,7 @@ abstract class $IssueDataCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
-      String subtitle,
+      @Deprecated('subtitle is currenly not used') String? subtitle,
       String userAvatarUrl,
       String userLogin,
       List<IssueLabel> labels,
@@ -56,7 +57,7 @@ class _$IssueDataCopyWithImpl<$Res, $Val extends IssueData>
   @override
   $Res call({
     Object? title = null,
-    Object? subtitle = null,
+    Object? subtitle = freezed,
     Object? userAvatarUrl = null,
     Object? userLogin = null,
     Object? labels = null,
@@ -67,10 +68,10 @@ class _$IssueDataCopyWithImpl<$Res, $Val extends IssueData>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      subtitle: null == subtitle
+      subtitle: freezed == subtitle
           ? _value.subtitle
           : subtitle // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       userAvatarUrl: null == userAvatarUrl
           ? _value.userAvatarUrl
           : userAvatarUrl // ignore: cast_nullable_to_non_nullable
@@ -101,7 +102,7 @@ abstract class _$$IssueDataImplCopyWith<$Res>
   @useResult
   $Res call(
       {String title,
-      String subtitle,
+      @Deprecated('subtitle is currenly not used') String? subtitle,
       String userAvatarUrl,
       String userLogin,
       List<IssueLabel> labels,
@@ -120,7 +121,7 @@ class __$$IssueDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? subtitle = null,
+    Object? subtitle = freezed,
     Object? userAvatarUrl = null,
     Object? userLogin = null,
     Object? labels = null,
@@ -131,10 +132,10 @@ class __$$IssueDataImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      subtitle: null == subtitle
+      subtitle: freezed == subtitle
           ? _value.subtitle
           : subtitle // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       userAvatarUrl: null == userAvatarUrl
           ? _value.userAvatarUrl
           : userAvatarUrl // ignore: cast_nullable_to_non_nullable
@@ -160,7 +161,7 @@ class __$$IssueDataImplCopyWithImpl<$Res>
 class _$IssueDataImpl implements _IssueData {
   const _$IssueDataImpl(
       {required this.title,
-      required this.subtitle,
+      @Deprecated('subtitle is currenly not used') this.subtitle,
       required this.userAvatarUrl,
       required this.userLogin,
       required final List<IssueLabel> labels,
@@ -170,7 +171,8 @@ class _$IssueDataImpl implements _IssueData {
   @override
   final String title;
   @override
-  final String subtitle;
+  @Deprecated('subtitle is currenly not used')
+  final String? subtitle;
   @override
   final String userAvatarUrl;
   @override
@@ -222,7 +224,7 @@ class _$IssueDataImpl implements _IssueData {
 abstract class _IssueData implements IssueData {
   const factory _IssueData(
       {required final String title,
-      required final String subtitle,
+      @Deprecated('subtitle is currenly not used') final String? subtitle,
       required final String userAvatarUrl,
       required final String userLogin,
       required final List<IssueLabel> labels,
@@ -231,7 +233,8 @@ abstract class _IssueData implements IssueData {
   @override
   String get title;
   @override
-  String get subtitle;
+  @Deprecated('subtitle is currenly not used')
+  String? get subtitle;
   @override
   String get userAvatarUrl;
   @override

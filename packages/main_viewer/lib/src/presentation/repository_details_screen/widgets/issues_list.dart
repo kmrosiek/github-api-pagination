@@ -15,9 +15,11 @@ class IssuesList extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: Dim.screenPadding),
           child: Column(
-              children: state.issues
-                  .map((issue) => IssueCard(issueData: issueData))
-                  .toList()),
+              children: !state.isLoading && state.issues.isEmpty
+                  ? [const Center(child: Text('Happy repo. No issues!'))]
+                  : state.issues
+                      .map((issue) => IssueCard(issueData: issueData))
+                      .toList()),
         );
       },
     );

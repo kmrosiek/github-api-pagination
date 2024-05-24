@@ -6,7 +6,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:main_viewer/main_viewer.dart';
 import 'package:main_viewer/src/application/issues_cubit/issues_cubit.dart';
-import 'package:main_viewer/src/domain/models/issue_data/issue_label.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
@@ -19,7 +18,6 @@ void main() {
 
   final IssueData issueDataSample = IssueData(
       title: 'Issue title',
-      subtitle: '#123123',
       userAvatarUrl: 'https://avatars.githubusercontent.com/u/840911?v=4',
       userLogin: 'rocky',
       labels: [const IssueLabel(text: 'main', color: Color(0xFFFFFFFF))],

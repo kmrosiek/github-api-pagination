@@ -9,6 +9,7 @@ export 'src/domain/interfaces/i_issues_repository.dart'
 export 'src/domain/interfaces/i_repository_search.dart' show IRepositorySearch;
 export 'src/domain/models/repository_data/repository_data.dart';
 export 'src/domain/models/issue_data/issue_data.dart' show IssueData;
+export 'src/domain/models/issue_data/issue_label.dart' show IssueLabel;
 export 'src/injection.dart' show configureMainViewerInjectable;
 export 'src/application/issues_cubit/issues_cubit.dart'
     show IssuesCubit;//TODO remove
