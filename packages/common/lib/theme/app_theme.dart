@@ -15,6 +15,10 @@ class AppTheme {
         borderRadius: BorderRadius.circular(Dim.borderRadius),
       ),
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(foregroundColor: Colors.black)),
+    progressIndicatorTheme:
+        const ProgressIndicatorThemeData(color: Colors.black),
     cardTheme: const CardTheme(
         color: AppColors.card,
         margin: EdgeInsets.symmetric(vertical: Dim.verticalCardsMargin),

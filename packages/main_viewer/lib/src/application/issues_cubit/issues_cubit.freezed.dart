@@ -20,6 +20,7 @@ mixin _$IssuesState {
   List<IssueData> get issues => throw _privateConstructorUsedError;
   Option<Failure> get maybeFailure => throw _privateConstructorUsedError;
   int get paginationPage => throw _privateConstructorUsedError;
+  bool get hasMoreIssuesToFetch => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $IssuesStateCopyWith<IssuesState> get copyWith =>
@@ -36,7 +37,8 @@ abstract class $IssuesStateCopyWith<$Res> {
       {bool isLoading,
       List<IssueData> issues,
       Option<Failure> maybeFailure,
-      int paginationPage});
+      int paginationPage,
+      bool hasMoreIssuesToFetch});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$IssuesStateCopyWithImpl<$Res, $Val extends IssuesState>
     Object? issues = null,
     Object? maybeFailure = null,
     Object? paginationPage = null,
+    Object? hasMoreIssuesToFetch = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -74,6 +77,10 @@ class _$IssuesStateCopyWithImpl<$Res, $Val extends IssuesState>
           ? _value.paginationPage
           : paginationPage // ignore: cast_nullable_to_non_nullable
               as int,
+      hasMoreIssuesToFetch: null == hasMoreIssuesToFetch
+          ? _value.hasMoreIssuesToFetch
+          : hasMoreIssuesToFetch // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -90,7 +97,8 @@ abstract class _$$IssuesStateImplCopyWith<$Res>
       {bool isLoading,
       List<IssueData> issues,
       Option<Failure> maybeFailure,
-      int paginationPage});
+      int paginationPage,
+      bool hasMoreIssuesToFetch});
 }
 
 /// @nodoc
@@ -108,6 +116,7 @@ class __$$IssuesStateImplCopyWithImpl<$Res>
     Object? issues = null,
     Object? maybeFailure = null,
     Object? paginationPage = null,
+    Object? hasMoreIssuesToFetch = null,
   }) {
     return _then(_$IssuesStateImpl(
       isLoading: null == isLoading
@@ -126,19 +135,25 @@ class __$$IssuesStateImplCopyWithImpl<$Res>
           ? _value.paginationPage
           : paginationPage // ignore: cast_nullable_to_non_nullable
               as int,
+      hasMoreIssuesToFetch: null == hasMoreIssuesToFetch
+          ? _value.hasMoreIssuesToFetch
+          : hasMoreIssuesToFetch // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$IssuesStateImpl implements _IssuesState {
+class _$IssuesStateImpl extends _IssuesState {
   const _$IssuesStateImpl(
       {required this.isLoading,
       required final List<IssueData> issues,
       required this.maybeFailure,
-      required this.paginationPage})
-      : _issues = issues;
+      required this.paginationPage,
+      required this.hasMoreIssuesToFetch})
+      : _issues = issues,
+        super._();
 
   @override
   final bool isLoading;
@@ -154,10 +169,12 @@ class _$IssuesStateImpl implements _IssuesState {
   final Option<Failure> maybeFailure;
   @override
   final int paginationPage;
+  @override
+  final bool hasMoreIssuesToFetch;
 
   @override
   String toString() {
-    return 'IssuesState(isLoading: $isLoading, issues: $issues, maybeFailure: $maybeFailure, paginationPage: $paginationPage)';
+    return 'IssuesState(isLoading: $isLoading, issues: $issues, maybeFailure: $maybeFailure, paginationPage: $paginationPage, hasMoreIssuesToFetch: $hasMoreIssuesToFetch)';
   }
 
   @override
@@ -171,7 +188,9 @@ class _$IssuesStateImpl implements _IssuesState {
             (identical(other.maybeFailure, maybeFailure) ||
                 other.maybeFailure == maybeFailure) &&
             (identical(other.paginationPage, paginationPage) ||
-                other.paginationPage == paginationPage));
+                other.paginationPage == paginationPage) &&
+            (identical(other.hasMoreIssuesToFetch, hasMoreIssuesToFetch) ||
+                other.hasMoreIssuesToFetch == hasMoreIssuesToFetch));
   }
 
   @override
@@ -180,7 +199,8 @@ class _$IssuesStateImpl implements _IssuesState {
       isLoading,
       const DeepCollectionEquality().hash(_issues),
       maybeFailure,
-      paginationPage);
+      paginationPage,
+      hasMoreIssuesToFetch);
 
   @JsonKey(ignore: true)
   @override
@@ -189,12 +209,14 @@ class _$IssuesStateImpl implements _IssuesState {
       __$$IssuesStateImplCopyWithImpl<_$IssuesStateImpl>(this, _$identity);
 }
 
-abstract class _IssuesState implements IssuesState {
+abstract class _IssuesState extends IssuesState {
   const factory _IssuesState(
       {required final bool isLoading,
       required final List<IssueData> issues,
       required final Option<Failure> maybeFailure,
-      required final int paginationPage}) = _$IssuesStateImpl;
+      required final int paginationPage,
+      required final bool hasMoreIssuesToFetch}) = _$IssuesStateImpl;
+  const _IssuesState._() : super._();
 
   @override
   bool get isLoading;
@@ -204,6 +226,8 @@ abstract class _IssuesState implements IssuesState {
   Option<Failure> get maybeFailure;
   @override
   int get paginationPage;
+  @override
+  bool get hasMoreIssuesToFetch;
   @override
   @JsonKey(ignore: true)
   _$$IssuesStateImplCopyWith<_$IssuesStateImpl> get copyWith =>

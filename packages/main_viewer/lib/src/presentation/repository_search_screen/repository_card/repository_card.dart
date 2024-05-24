@@ -1,6 +1,8 @@
 import 'package:common/constants/app_colors.dart';
 import 'package:common/constants/dim.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:main_viewer/src/application/issues_cubit/issues_cubit.dart';
 import 'package:main_viewer/src/domain/repository_data/repository_data.dart';
 import 'package:main_viewer/src/presentation/repository_details_screen/repository_details_screen.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/widgets/owner_avatar_and_login.dart';
@@ -38,7 +40,10 @@ class RepositoryCard extends StatelessWidget
               color: hideBorder ? Colors.transparent : AppColors.border)),
       child: InkWell(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => RepositoryDetailsScreen(index: index))),
+            builder: (context) => BlocProvider(
+                  create: (context) => IssuesCubit(),
+                  child: RepositoryDetailsScreen(index: index),
+                ))),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(

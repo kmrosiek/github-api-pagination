@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:common/failure/failure.dart';
 import 'package:dartz/dartz.dart';
@@ -10,7 +12,12 @@ part 'issues_cubit.freezed.dart';
 class IssuesCubit extends Cubit<IssuesState> {
   IssuesCubit() : super(IssuesState.initial());
 
-  Future<void> fetch(String searchPhrase) async {
-    emit(state.copyWith(isLoading: true));
+  int counter = 1;
+  Future<void> fetch() async {
+    if (!state.canFetchMore) {
+      log('Cannot fetch more because loading: ${state.isLoading} or cannot fetch: ${state.canFetchMore}');
+      return;
+    }
+    emit(state.copyWith(isLoading: true, maybeFailure: const None()));
   }
 }
