@@ -4,14 +4,16 @@ import 'package:common/failure/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:main_viewer/src/domain/models/repository_data/repository_data.dart';
+import 'package:main_viewer/main_viewer.dart';
 
 part 'repository_search_state.dart';
 part 'repository_search_cubit.freezed.dart';
 
 @injectable
 class RepositorySearchCubit extends Cubit<RepositorySearchState> {
-  RepositorySearchCubit() : super(RepositorySearchState.initial());
+  RepositorySearchCubit(this._repositorySearch)
+      : super(RepositorySearchState.initial());
+  final IRepositorySearch _repositorySearch;
   CancelableOperation? _searchOperation;
 
   static const _minCharsRequiredForSearch = 3;
@@ -28,16 +30,13 @@ class RepositorySearchCubit extends Cubit<RepositorySearchState> {
     }
 
     emit(state.copyWith(isLoading: true));
-    _searchOperation =
-        CancelableOperation.fromFuture(_getNumber(searchPhrase)).then((number) {
+    _searchOperation = CancelableOperation.fromFuture(
+            _repositorySearch.fetch(searchPhrase: searchPhrase))
+        .then((number) {
       _searchOperation = null;
       emit(state.copyWith(
           isLoading: false,
           dataFailureOrNothing: const Some(Right([repositoryExample]))));
     });
-  }
-
-  Future<int> _getNumber(String phrase) {
-    return Future.delayed(const Duration(milliseconds: 1500), () => 1);
   }
 }

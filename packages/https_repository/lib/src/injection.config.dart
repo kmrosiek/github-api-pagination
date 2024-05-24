@@ -9,12 +9,12 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i1;
-import 'package:injectable/injectable.dart' as _i2;
-import 'package:main_viewer/main_viewer.dart' as _i4;
-import 'package:main_viewer/src/application/issues_cubit/issues_cubit.dart'
+import 'package:https_repository/src/issues_repository/issues_repository.dart'
     as _i5;
-import 'package:main_viewer/src/application/repository_search_cubit/repository_search_cubit.dart'
-    as _i3;
+import 'package:https_repository/src/repository_search/repository_search.dart'
+    as _i4;
+import 'package:injectable/injectable.dart' as _i2;
+import 'package:main_viewer/main_viewer.dart' as _i3;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -27,17 +27,8 @@ extension GetItInjectableX on _i1.GetIt {
       environment,
       environmentFilter,
     );
-    gh.factory<_i3.RepositorySearchCubit>(
-        () => _i3.RepositorySearchCubit(gh<_i4.IRepositorySearch>()));
-    gh.factoryParam<_i5.IssuesCubit, String, String>((
-      ownerLogin,
-      repositoryName,
-    ) =>
-        _i5.IssuesCubit(
-          gh<_i4.IIssuesRepository>(),
-          ownerLogin,
-          repositoryName,
-        ));
+    gh.lazySingleton<_i3.IRepositorySearch>(() => _i4.RepositorySearch());
+    gh.lazySingleton<_i3.IIssuesRepository>(() => _i5.IssuesRepository());
     return this;
   }
 }

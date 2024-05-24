@@ -8,6 +8,6 @@ typedef FailureOrDataAndHasMoreToFetch = (
 );
 
 abstract class IIssuesRepository {
-  FailureOrDataAndHasMoreToFetch fetch(
+  Future<FailureOrDataAndHasMoreToFetch> fetch(
       {required String ownerLogin, required String repositoryName});
 }

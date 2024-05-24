@@ -1,7 +1,13 @@
+import 'package:common/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:github_viewer/injection.dart';
+import 'package:injectable/injectable.dart';
 import 'package:main_viewer/main_viewer.dart';
 
 void main() {
+  const environment =
+      String.fromEnvironment('ENVIRONMENT_F', defaultValue: Environment.prod);
+  configureDependencies(environment);
   runApp(const MyApp());
 }
 
@@ -12,10 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'GitHub API',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.lightTheme,
       home: const RepositorySearchScreen(),
     );
   }

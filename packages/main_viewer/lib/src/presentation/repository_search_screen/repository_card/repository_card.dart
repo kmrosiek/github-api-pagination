@@ -42,7 +42,9 @@ class RepositoryCard extends StatelessWidget
       child: InkWell(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => BlocProvider(
-                  create: (context) => getIt<IssuesCubit>(),
+                  create: (context) => getIt<IssuesCubit>(
+                      param1: repositoryData.ownerName,
+                      param2: repositoryData.repositoryName),
                   child: RepositoryDetailsScreen(index: index),
                 ))),
         child: Padding(

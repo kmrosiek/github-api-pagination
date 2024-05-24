@@ -15,6 +15,7 @@ abstract class RepositoryData with _$RepositoryData {
   }) = _RepositoryData;
 }
 
+//TODO remove
 const repositoryExample = RepositoryData(
     repositoryName: 'Repo name',
     programmingLanguage: 'javascript',
