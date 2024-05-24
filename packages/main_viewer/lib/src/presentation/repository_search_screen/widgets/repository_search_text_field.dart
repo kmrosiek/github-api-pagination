@@ -55,14 +55,8 @@ class _RepositorySearchTextFieldState extends State<RepositorySearchTextField> {
         padding: const EdgeInsets.only(top: 0.0),
         child: TextField(
           controller: _searchController,
-          onTapOutside: (_) {
-            FocusManager.instance.primaryFocus?.unfocus();
-          },
-          decoration: InputDecoration(
-            hintText: 'Search Repositories',
-            border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(12.0)),
-          ),
+          onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+          decoration: const InputDecoration(hintText: 'Search Repositories'),
         ),
       ),
     );

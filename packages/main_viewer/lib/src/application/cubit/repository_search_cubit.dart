@@ -36,6 +36,6 @@ class RepositorySearchCubit extends Cubit<RepositorySearchState> {
   }
 
   Future<int> _getNumber(String phrase) {
-    return Future.delayed(const Duration(milliseconds: 1), () => 1);
+    return Future.delayed(const Duration(milliseconds: 1500), () => 1);
   }
 }

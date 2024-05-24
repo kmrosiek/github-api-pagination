@@ -1,5 +1,7 @@
+import 'package:common/constants/dim.dart';
 import 'package:flutter/material.dart';
 import 'package:main_viewer/src/domain/repository_data/repository_data.dart';
+import 'package:main_viewer/src/presentation/repository_details_screen/widgets/issues_list.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/repository_card.dart';
 
 class RepositoryDetailsScreen extends StatelessWidget {
@@ -9,10 +11,14 @@ class RepositoryDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          surfaceTintColor: Colors.transparent),
       body: SafeArea(
         bottom: false,
-        child: Column(
+        child: ListView(
           children: [
             Hero(
                 tag: 'hero_$index',
@@ -20,10 +26,24 @@ class RepositoryDetailsScreen extends StatelessWidget {
                     repositoryData: repositoryExample,
                     index: index,
                     stoppedAnimation: true,
-                    hideBorder: true))
+                    hideCardStyle: true)),
+            ..._issuesTitle,
+            const IssuesList(),
           ],
         ),
       ),
     );
   }
+
+  List<Widget> get _issuesTitle => [
+        _divider,
+        const Center(
+            child: Text('Issues',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))),
+        _divider
+      ];
+
+  Widget get _divider => const Padding(
+      padding: EdgeInsets.symmetric(horizontal: Dim.screenPadding),
+      child: Divider());
 }

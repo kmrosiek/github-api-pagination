@@ -1,77 +1,79 @@
+import 'package:common/constants/app_colors.dart';
+import 'package:common/constants/dim.dart';
 import 'package:flutter/material.dart';
 import 'package:main_viewer/src/domain/repository_data/repository_data.dart';
 import 'package:main_viewer/src/presentation/repository_details_screen/repository_details_screen.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/widgets/owner_avatar_and_login.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/widgets/programming_language_row.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/widgets/repository_card_animations_mixin.dart';
-import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/widgets/repository_card_border.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/widgets/stars_and_forks_stats.dart';
 
 class RepositoryCard extends StatelessWidget
     with RepositoryCardAnimationsMixin {
-  const RepositoryCard(
-      {super.key,
-      required this.repositoryData,
-      this.cardAnimationDelay = 0,
-      required this.index,
-      this.hideBorder = false,
-      this.stoppedAnimation = false});
+  const RepositoryCard({
+    super.key,
+    required this.repositoryData,
+    this.cardAnimationDelay = 0,
+    required this.index,
+    this.hideCardStyle = false,
+    this.stoppedAnimation = false,
+  });
   final int cardAnimationDelay;
   final int index;
   final RepositoryData repositoryData;
-  final bool hideBorder;
+  final bool hideCardStyle;
   final bool stoppedAnimation;
+
+  bool get hideBorder => hideCardStyle;
+  bool get hideElevation => hideCardStyle;
 
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return Card(
+      elevation: hideElevation ? 0.0 : null,
+      shape: RoundedRectangleBorder(
+          borderRadius:
+              const BorderRadius.all(Radius.circular(Dim.borderRadius)),
+          side: BorderSide(
+              color: hideBorder ? Colors.transparent : AppColors.border)),
       child: InkWell(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => RepositoryDetailsScreen(index: index))),
-        child: Container(
-          decoration: BoxDecoration(
-              borderRadius:
-                  BorderRadius.circular(RepositoryCardBorder.borderRadius),
-              border: Border.all(
-                  color: hideBorder
-                      ? Colors.transparent
-                      : RepositoryCardBorder.borderColor)),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    OwnerAvatarAndLogin(
-                        stoppedAnimation: stoppedAnimation,
-                        ownerLogin: repositoryData.ownerName,
-                        ownerAvatarUrl: repositoryData.ownerAvatarUrl),
-                    _buildRepositoryName(),
-                  ],
-                ),
-                const SizedBox(height: 8.0),
-                _buildRepositoryDescription(),
-                const SizedBox(height: 16.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ProgrammingLanguageRow(
-                        stoppedAnimation: stoppedAnimation,
-                        userAvatarUrl: repositoryData.ownerAvatarUrl,
-                        programmingLanguageName:
-                            repositoryData.programmingLanguage,
-                        cardAnimationDelay: cardAnimationDelay),
-                    StarsAndForksStats(
-                        stoppedAnimation: stoppedAnimation,
-                        starsCount: repositoryData.stars,
-                        forksCount: repositoryData.forks,
-                        cardAnimationDelay: cardAnimationDelay)
-                  ],
-                ),
-              ],
-            ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  OwnerAvatarAndLogin(
+                      stoppedAnimation: stoppedAnimation,
+                      ownerLogin: repositoryData.ownerName,
+                      ownerAvatarUrl: repositoryData.ownerAvatarUrl),
+                  _buildRepositoryName(),
+                ],
+              ),
+              const SizedBox(height: 8.0),
+              _buildRepositoryDescription(),
+              const SizedBox(height: 16.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ProgrammingLanguageRow(
+                      stoppedAnimation: stoppedAnimation,
+                      userAvatarUrl: repositoryData.ownerAvatarUrl,
+                      programmingLanguageName:
+                          repositoryData.programmingLanguage,
+                      cardAnimationDelay: cardAnimationDelay),
+                  StarsAndForksStats(
+                      stoppedAnimation: stoppedAnimation,
+                      starsCount: repositoryData.stars,
+                      forksCount: repositoryData.forks,
+                      cardAnimationDelay: cardAnimationDelay)
+                ],
+              ),
+            ],
           ),
         ),
       ),
