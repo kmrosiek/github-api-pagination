@@ -13,16 +13,17 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
+  https_repository:
+    path: packages/https_repository
   injectable: ^2.4.2
   main_viewer:
     path: packages/main_viewer
-  https_repository:
-    path: packages/https_repository
 
 dev_dependencies:
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
+  melos: ^6.0.0
 
 flutter:
   uses-material-design: true

@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: common,main_viewer
+dependency_overrides:
+  common:
+    path: ../common
+  main_viewer:
+    path: ../main_viewer
