@@ -21,13 +21,12 @@ class OwnerAvatarAndLogin extends StatelessWidget
             stoppedAnimation: stoppedAnimation,
             child: const Icon(FontAwesomeIcons.github)), //TODO replace avatar
         const SizedBox(width: 8.0),
-        textAnimation(
-          stoppedAnimation: stoppedAnimation,
-          child: Text(ownerLogin,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
-              )),
+        Flexible(
+          child: textAnimation(
+            stoppedAnimation: stoppedAnimation,
+            child: Text(ownerLogin,
+                style: const TextStyle(fontSize: 12.0), maxLines: 2),
+          ),
         ),
       ],
     );

@@ -13,6 +13,18 @@ abstract class RepositoryData with _$RepositoryData {
     required String ownerName,
     required String ownerAvatarUrl,
   }) = _RepositoryData;
+
+  factory RepositoryData.fromJson(Map<String, dynamic> json) {
+    return RepositoryData(
+      repositoryName: json['name'],
+      description: json['description'] ?? '',
+      stars: json['stargazers_count'],
+      forks: json['forks_count'],
+      programmingLanguage: json['language'] ?? '',
+      ownerName: json['owner']['login'],
+      ownerAvatarUrl: json['owner']['avatar_url'],
+    );
+  }
 }
 
 //TODO remove

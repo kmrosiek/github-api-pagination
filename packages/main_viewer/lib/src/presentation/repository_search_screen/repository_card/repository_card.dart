@@ -46,10 +46,12 @@ class RepositoryCard extends StatelessWidget
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  OwnerAvatarAndLogin(
-                      stoppedAnimation: stoppedAnimation,
-                      ownerLogin: repositoryData.ownerName,
-                      ownerAvatarUrl: repositoryData.ownerAvatarUrl),
+                  Expanded(
+                    child: OwnerAvatarAndLogin(
+                        stoppedAnimation: stoppedAnimation,
+                        ownerLogin: repositoryData.ownerName,
+                        ownerAvatarUrl: repositoryData.ownerAvatarUrl),
+                  ),
                   _buildRepositoryName(),
                 ],
               ),
@@ -61,7 +63,6 @@ class RepositoryCard extends StatelessWidget
                 children: [
                   ProgrammingLanguageRow(
                       stoppedAnimation: stoppedAnimation,
-                      userAvatarUrl: repositoryData.ownerAvatarUrl,
                       programmingLanguageName:
                           repositoryData.programmingLanguage,
                       cardAnimationDelay: cardAnimationDelay),
@@ -110,7 +111,8 @@ class RepositoryCard extends StatelessWidget
       child: textAnimation(
         delay: getDelayDuration(50, sharedDelay: cardAnimationDelay),
         stoppedAnimation: stoppedAnimation,
-        child: Text(repositoryData.description, maxLines: 2),
+        child: Text(repositoryData.description,
+            maxLines: 2, overflow: TextOverflow.ellipsis),
       ),
     );
   }
