@@ -13,9 +13,10 @@ class RepositoryDetailsScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          surfaceTintColor: Colors.transparent),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        surfaceTintColor: Colors.transparent,
+      ),
       body: SafeArea(
         bottom: false,
         child: ListView(

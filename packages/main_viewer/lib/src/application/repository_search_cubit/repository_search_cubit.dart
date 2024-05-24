@@ -14,7 +14,7 @@ class RepositorySearchCubit extends Cubit<RepositorySearchState> {
 
   static const _minCharsRequiredForSearch = 3;
 
-  void searchRepositories(String searchPhrase) async {
+  Future<void> searchRepositories(String searchPhrase) async {
     if (_searchOperation != null) {
       _searchOperation?.cancel();
     }
