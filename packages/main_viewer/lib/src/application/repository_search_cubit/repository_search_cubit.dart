@@ -32,11 +32,10 @@ class RepositorySearchCubit extends Cubit<RepositorySearchState> {
     emit(state.copyWith(isLoading: true));
     _searchOperation = CancelableOperation.fromFuture(
             _repositorySearch.fetch(searchPhrase: searchPhrase))
-        .then((number) {
-      _searchOperation = null;
+        .then((failureOrData) {
       emit(state.copyWith(
-          isLoading: false,
-          dataFailureOrNothing: const Some(Right([repositoryExample]))));
+          dataFailureOrNothing: Some(failureOrData), isLoading: false));
+      _searchOperation = null;
     });
   }
 }

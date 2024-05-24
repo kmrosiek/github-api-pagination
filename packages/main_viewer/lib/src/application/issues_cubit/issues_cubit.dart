@@ -27,5 +27,17 @@ class IssuesCubit extends Cubit<IssuesState> {
     emit(state.copyWith(isLoading: true, maybeFailure: const None()));
     final (failureOrData, hasMoreToFetch) = await _issuesRepository.fetch(
         ownerLogin: ownerLogin, repositoryName: repositoryName);
+
+    failureOrData.fold(
+        (failure) =>
+            emit(state.copyWith(maybeFailure: Some(failure), isLoading: false)),
+        (data) {
+      final List<IssueData> updatedIssues = List.from(state.issues);
+      updatedIssues.addAll(data);
+      emit(state.copyWith(
+          issues: updatedIssues,
+          hasMoreIssuesToFetch: hasMoreToFetch,
+          isLoading: false));
+    });
   }
 }
