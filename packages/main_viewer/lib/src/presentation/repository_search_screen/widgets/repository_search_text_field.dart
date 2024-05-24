@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:main_viewer/src/application/cubit/repository_search_cubit.dart';
+import 'package:main_viewer/src/application/repository_search_cubit/repository_search_cubit.dart';
 
 class RepositorySearchTextField extends StatefulWidget {
   const RepositorySearchTextField({super.key});

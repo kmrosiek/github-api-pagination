@@ -1,7 +1,7 @@
 import 'package:common/constants/dim.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:main_viewer/src/application/cubit/repository_search_cubit.dart';
+import 'package:main_viewer/src/application/repository_search_cubit/repository_search_cubit.dart';
 import 'package:main_viewer/src/domain/repository_data/repository_data.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/loading_border_repository_card.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/repository_card.dart';

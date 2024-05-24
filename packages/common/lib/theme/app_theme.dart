@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.scaffoldBackground,
-    //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
     useMaterial3: true,
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(
