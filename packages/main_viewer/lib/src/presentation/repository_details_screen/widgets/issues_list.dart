@@ -2,8 +2,7 @@ import 'package:common/constants/dim.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:main_viewer/src/application/issues_cubit/issues_cubit.dart';
-import 'package:main_viewer/src/domain/models/issue_data/issue_data.dart';
-import 'package:main_viewer/src/presentation/repository_details_screen/widgets/issue_card.dart';
+import 'package:main_viewer/src/presentation/repository_details_screen/widgets/issue_card/issue_card.dart';
 
 class IssuesList extends StatelessWidget {
   const IssuesList({super.key});
@@ -18,7 +17,7 @@ class IssuesList extends StatelessWidget {
               children: !state.isLoading && state.issues.isEmpty
                   ? [const Center(child: Text('Happy repo. No issues!'))]
                   : state.issues
-                      .map((issue) => IssueCard(issueData: issueData))
+                      .map((issue) => IssueCard(issueData: issue))
                       .toList()),
         );
       },

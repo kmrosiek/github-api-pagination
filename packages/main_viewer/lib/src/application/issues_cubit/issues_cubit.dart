@@ -26,7 +26,9 @@ class IssuesCubit extends Cubit<IssuesState> {
     }
     emit(state.copyWith(isLoading: true, maybeFailure: const None()));
     final (failureOrData, hasMoreToFetch) = await _issuesRepository.fetch(
-        ownerLogin: ownerLogin, repositoryName: repositoryName);
+        ownerLogin: ownerLogin,
+        repositoryName: repositoryName,
+        paginationPage: state.paginationPage);
 
     if (isClosed) return;
     failureOrData.fold(
@@ -37,6 +39,7 @@ class IssuesCubit extends Cubit<IssuesState> {
       updatedIssues.addAll(data);
       emit(state.copyWith(
           issues: updatedIssues,
+          paginationPage: state.paginationPage + 1,
           hasMoreIssuesToFetch: hasMoreToFetch,
           isLoading: false));
     });

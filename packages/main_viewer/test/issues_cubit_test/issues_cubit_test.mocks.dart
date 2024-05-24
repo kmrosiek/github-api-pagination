@@ -48,6 +48,7 @@ class MockIIssuesRepository extends _i1.Mock implements _i3.IIssuesRepository {
   _i4.Future<(_i2.Either<_i5.Failure, List<_i6.IssueData>>, bool)> fetch({
     required String? ownerLogin,
     required String? repositoryName,
+    required int? paginationPage,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -56,6 +57,7 @@ class MockIIssuesRepository extends _i1.Mock implements _i3.IIssuesRepository {
           {
             #ownerLogin: ownerLogin,
             #repositoryName: repositoryName,
+            #paginationPage: paginationPage,
           },
         ),
         returnValue: _i4.Future<
@@ -68,6 +70,7 @@ class MockIIssuesRepository extends _i1.Mock implements _i3.IIssuesRepository {
               {
                 #ownerLogin: ownerLogin,
                 #repositoryName: repositoryName,
+                #paginationPage: paginationPage,
               },
             ),
           ),

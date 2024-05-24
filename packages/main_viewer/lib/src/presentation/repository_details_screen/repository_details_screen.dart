@@ -16,6 +16,8 @@ class RepositoryDetailsScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        title:
+            const Text('Issues', style: TextStyle(fontWeight: FontWeight.bold)),
         leading:
             BackButton(color: Colors.black, onPressed: () => nav.pop(context)),
         backgroundColor: Colors.transparent,

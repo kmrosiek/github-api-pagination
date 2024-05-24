@@ -14,12 +14,16 @@ abstract class IssueData with _$IssueData {
     required List<IssueLabel> labels,
     required DateTime createdAt,
   }) = _IssueData;
-}
 
-//TODO remove
-final IssueData issueData = IssueData(
-    title: 'Issue title',
-    userAvatarUrl: 'https://avatars.githubusercontent.com/u/840911?v=4',
-    userLogin: 'rocky',
-    labels: [const IssueLabel(text: 'main', color: Colors.amber)],
-    createdAt: DateTime(2022, 2, 2));
+  factory IssueData.fromJson(Map<String, dynamic> json) {
+    return IssueData(
+        title: json['title'],
+        userAvatarUrl: json['user']['avatar_url'],
+        userLogin: json['user']['login'],
+        labels: (json['labels'] as List<dynamic>)
+            .map((e) => IssueLabel(
+                color: Color(int.parse("0xFF${e['color']}")), text: e['name']))
+            .toList(),
+        createdAt: DateTime.parse(json['created_at']));
+  }
+}

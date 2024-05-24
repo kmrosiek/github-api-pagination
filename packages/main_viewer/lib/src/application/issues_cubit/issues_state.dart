@@ -11,8 +11,6 @@ abstract class IssuesState with _$IssuesState {
     required bool hasMoreIssuesToFetch,
   }) = _IssuesState;
 
-  static const int paginationPageSize = 10;
-
   bool get failureWithNoIssuesListed =>
       maybeFailure.fold(() => false, (failure) => issues.isEmpty);
 

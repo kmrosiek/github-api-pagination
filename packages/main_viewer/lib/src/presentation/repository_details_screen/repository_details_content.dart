@@ -35,21 +35,13 @@ class _RepositoryDetailsContentState extends State<RepositoryDetailsContent>
                   index: widget.repoIndex,
                   stoppedAnimation: true,
                   hideCardStyle: true)),
-          ..._issuesTitle,
+          _divider,
           const IssuesList(),
           const LoadingIndicatorAndRetryButton(),
         ],
       ),
     );
   }
-
-  List<Widget> get _issuesTitle => [
-        _divider,
-        const Center(
-            child: Text('Issues',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))),
-        _divider
-      ];
 
   Widget get _divider => const Padding(
       padding: EdgeInsets.symmetric(horizontal: Dim.screenPadding),

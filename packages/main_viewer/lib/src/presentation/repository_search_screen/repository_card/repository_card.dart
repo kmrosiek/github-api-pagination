@@ -37,7 +37,9 @@ class RepositoryCard extends StatelessWidget
           side: BorderSide(
               color: hideBorder ? Colors.transparent : AppColors.border)),
       child: InkWell(
-        onTap: () => _navigateToRepositoryDetailsScreen(context),
+        onTap: hideCardStyle
+            ? null
+            : () => _navigateToRepositoryDetailsScreen(context),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -46,13 +48,13 @@ class RepositoryCard extends StatelessWidget
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
+                  Flexible(
                     child: OwnerAvatarAndLogin(
                         stoppedAnimation: stoppedAnimation,
                         ownerLogin: repositoryData.ownerName,
                         ownerAvatarUrl: repositoryData.ownerAvatarUrl),
                   ),
-                  _buildRepositoryName(),
+                  Expanded(child: _buildRepositoryName()),
                 ],
               ),
               const SizedBox(height: 8.0),
@@ -99,10 +101,11 @@ class RepositoryCard extends StatelessWidget
         delay: getDelayDuration(50, sharedDelay: cardAnimationDelay),
         stoppedAnimation: stoppedAnimation,
         child: Text(repositoryData.repositoryName,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16.0,
-            )));
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.end,
+            style:
+                const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0)));
   }
 
   SizedBox _buildRepositoryDescription() {

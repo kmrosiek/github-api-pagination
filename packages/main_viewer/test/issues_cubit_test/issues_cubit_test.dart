@@ -39,6 +39,7 @@ void main() {
       when(mockIssuesRepository.fetch(
         ownerLogin: anyNamed('ownerLogin'),
         repositoryName: anyNamed('repositoryName'),
+        paginationPage: 1,
       )).thenAnswer((_) async => expectedAnswer);
       return issuesCubit;
     },
@@ -61,6 +62,7 @@ void main() {
       when(mockIssuesRepository.fetch(
         ownerLogin: anyNamed('ownerLogin'),
         repositoryName: anyNamed('repositoryName'),
+        paginationPage: 1,
       )).thenAnswer((_) async => expectedAnswer);
       return issuesCubit;
     },
@@ -71,6 +73,7 @@ void main() {
       IssuesState.initial().copyWith(
         issues: [issueDataSample],
         hasMoreIssuesToFetch: true,
+        paginationPage: 2,
         isLoading: false,
       ),
     ],
@@ -87,6 +90,7 @@ void main() {
       verifyNever(mockIssuesRepository.fetch(
         ownerLogin: anyNamed('ownerLogin'),
         repositoryName: anyNamed('repositoryName'),
+        paginationPage: 1,
       ));
     },
   );

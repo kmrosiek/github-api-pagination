@@ -7,15 +7,14 @@ import 'package:main_viewer/main_viewer.dart';
 
 @LazySingleton(as: IRepositorySearch)
 class RepositorySearch implements IRepositorySearch {
-  static const String baseUrl = 'https://api.github.com';
+  static const String urlBase = 'https://api.github.com';
   static const String searchRepositories = '/search/repositories';
 
   @override
   Future<Either<Failure, List<RepositoryData>>> fetch(
       {required String searchPhrase}) async {
-    await Future.delayed(const Duration(milliseconds: 1500), () => 1);
     final response = await http
-        .get(Uri.parse('$baseUrl$searchRepositories?q=$searchPhrase'));
+        .get(Uri.parse('$urlBase$searchRepositories?q=$searchPhrase'));
     if (response.statusCode == 200) {
       final List<dynamic> items = json.decode(response.body)['items'];
       return Right(items.map((item) => RepositoryData.fromJson(item)).toList());
