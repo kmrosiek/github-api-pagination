@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/widgets/repository_card_animations_mixin.dart';
 
 class OwnerAvatarAndLogin extends StatelessWidget
@@ -19,7 +18,11 @@ class OwnerAvatarAndLogin extends StatelessWidget
       children: [
         imageAnimation(
             stoppedAnimation: stoppedAnimation,
-            child: const Icon(FontAwesomeIcons.github)), //TODO replace avatar
+            child: Image.network(ownerAvatarUrl,
+                width: 20,
+                height: 20,
+                errorBuilder: (context, error, stackTrace) =>
+                    const Icon(Icons.person, size: 20))),
         const SizedBox(width: 8.0),
         Flexible(
           child: textAnimation(
