@@ -1,3 +1,4 @@
+import 'package:common/get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:main_viewer/src/application/repository_search_cubit/repository_search_cubit.dart';
@@ -12,7 +13,7 @@ class RepositorySearchScreen extends StatelessWidget {
         body: SafeArea(
             bottom: false,
             child: BlocProvider(
-                create: (_) => RepositorySearchCubit(),
+                create: (_) => getIt<RepositorySearchCubit>(),
                 child: const RepositorySearchContent())));
   }
 }

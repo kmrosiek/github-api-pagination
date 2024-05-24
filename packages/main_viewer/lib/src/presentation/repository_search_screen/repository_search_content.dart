@@ -1,4 +1,5 @@
 import 'package:common/constants/dim.dart';
+import 'package:common/get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:main_viewer/main_viewer.dart';
@@ -31,8 +32,8 @@ class _RepositorySearchContentState extends State<RepositorySearchContent>
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => BlocProvider(
-                create: (context) => IssuesCubit(),
-                child: RepositoryDetailsScreen(index: 1),
+                create: (context) => getIt<IssuesCubit>(),
+                child: const RepositoryDetailsScreen(index: 1),
               )));
     });
   }

@@ -13,6 +13,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
+  injectable: ^2.4.2
   main_viewer:
     path: packages/main_viewer
 

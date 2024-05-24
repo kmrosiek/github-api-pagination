@@ -1,5 +1,6 @@
 import 'package:common/constants/app_colors.dart';
 import 'package:common/constants/dim.dart';
+import 'package:common/get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:main_viewer/src/application/issues_cubit/issues_cubit.dart';
@@ -41,7 +42,7 @@ class RepositoryCard extends StatelessWidget
       child: InkWell(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => BlocProvider(
-                  create: (context) => IssuesCubit(),
+                  create: (context) => getIt<IssuesCubit>(),
                   child: RepositoryDetailsScreen(index: index),
                 ))),
         child: Padding(
