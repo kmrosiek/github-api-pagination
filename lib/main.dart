@@ -5,10 +5,14 @@ import 'package:injectable/injectable.dart';
 import 'package:main_viewer/main_viewer.dart';
 
 void main() {
+  configureApp();
+  runApp(const MyApp());
+}
+
+void configureApp() {
   const environment =
       String.fromEnvironment('ENVIRONMENT_F', defaultValue: Environment.prod);
   configureDependencies(environment);
-  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
