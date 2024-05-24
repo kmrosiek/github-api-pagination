@@ -1,4 +1,4 @@
-part of 'repository_details_screen.dart';
+part of 'repository_details_content.dart';
 
 mixin ListViewControllerWithPaginationMixin<T extends StatefulWidget>
     on State<T> {

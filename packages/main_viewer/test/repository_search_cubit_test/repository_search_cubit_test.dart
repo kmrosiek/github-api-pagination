@@ -61,7 +61,7 @@ void main() {
       RepositorySearchState.initial().copyWith(
         isLoading: false,
         notEnoughCharsToSearch: false,
-        dataFailureOrNothing: const Some(Right([repositoryExample])),
+        dataOrFailure: const Right([repositorySample]),
       ),
     ],
   );
@@ -70,7 +70,7 @@ void main() {
     'cancels previous search when new search is initiated',
     build: () {
       when(mockRepositorySearch.fetch(searchPhrase: anyNamed('searchPhrase')))
-          .thenAnswer((_) async => const Right([repositoryExample]));
+          .thenAnswer((_) async => const Right([repositorySample]));
       return repositorySearchCubit;
     },
     act: (cubit) async {
@@ -84,7 +84,7 @@ void main() {
       RepositorySearchState.initial().copyWith(
         isLoading: false,
         notEnoughCharsToSearch: false,
-        dataFailureOrNothing: const Some(Right([repositoryExample])),
+        dataOrFailure: const Right([repositorySample]),
       ),
     ],
   );
@@ -104,7 +104,7 @@ void main() {
       RepositorySearchState.initial().copyWith(
         isLoading: false,
         notEnoughCharsToSearch: false,
-        dataFailureOrNothing: const Some(Left(Failure())),
+        dataOrFailure: const Left(Failure()),
       ),
     ],
   );

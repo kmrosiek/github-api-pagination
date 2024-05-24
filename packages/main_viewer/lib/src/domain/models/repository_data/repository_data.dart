@@ -16,11 +16,11 @@ abstract class RepositoryData with _$RepositoryData {
 }
 
 //TODO remove
-const repositoryExample = RepositoryData(
-    repositoryName: 'Repo name',
+RepositoryData repositoryExample(int index) => RepositoryData(
+    repositoryName: 'Repo name $index',
     programmingLanguage: 'javascript',
-    description: 'This is repo description',
-    stars: 5,
-    forks: 2,
-    ownerName: 'alek',
+    description: 'This is repo description $index',
+    stars: 5 + index,
+    forks: 2 + index,
+    ownerName: 'alek $index',
     ownerAvatarUrl: 'asd');

@@ -1,10 +1,9 @@
 import 'package:common/constants/dim.dart';
-import 'package:common/get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:main_viewer/main_viewer.dart';
-import 'package:main_viewer/src/application/issues_cubit/issues_cubit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:main_viewer/src/application/repository_search_cubit/repository_search_cubit.dart';
+import 'package:main_viewer/src/domain/models/repository_data/repository_data.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/loading_border_repository_card.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/repository_card.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/widgets/animated_github_logo.dart';
@@ -28,14 +27,6 @@ class _RepositorySearchContentState extends State<RepositorySearchContent>
   void initState() {
     super.initState();
     initialiseAnimation(this);
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => BlocProvider(
-                create: (context) => getIt<IssuesCubit>(
-                    param1: 'ownerLogin', param2: 'repoName'),
-                child: const RepositoryDetailsScreen(index: 1),
-              )));
-    });
   }
 
   @override
@@ -54,32 +45,56 @@ class _RepositorySearchContentState extends State<RepositorySearchContent>
                 child: NestedScrollView(
                     key: _nestedScrollViewKey,
                     floatHeaderSlivers: true,
-                    headerSliverBuilder: (context, __) =>
+                    headerSliverBuilder: (_, __) =>
                         [const RepositorySearchTextField()],
                     body: state.notEnoughCharsToSearch
                         ? const SizedBox.shrink()
-                        : ListView(padding: EdgeInsets.zero, children: [
-                            ...List.generate(10, (index) {
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: Dim.screenPadding),
-                                child: state.isLoading
-                                    ? const LoadingBorderRepositoryCard()
-                                    : Hero(
-                                        tag: 'hero_$index',
-                                        child: RepositoryCard(
-                                            index: index,
-                                            repositoryData:
-                                                repositoryExample, //TODO replace
-                                            cardAnimationDelay:
-                                                index < 5 ? index * 100 : 0),
-                                      ),
-                              );
-                            })
-                          ]))),
+                        : Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: Dim.screenPadding),
+                            child: state.dataOrFailure.fold(
+                                (failure) => _buildFailureWidget(), (data) {
+                              if (state.isLoading) {
+                                return ListView(
+                                    padding: EdgeInsets.zero,
+                                    children: _loadingState);
+                              }
+                              if (data.isEmpty) {
+                                return const Center(
+                                    child: Text('Repositories not found'));
+                              }
+                              return ListView(
+                                  padding: EdgeInsets.zero,
+                                  children: _buildRepositoryCards(data));
+                            }))))
           ],
         );
       },
     );
   }
+
+  List<Widget> _buildRepositoryCards(List<RepositoryData> data) {
+    final List<Widget> cards = [];
+    for (int i = 0; i < data.length; i++) {
+      cards.add(Hero(
+          tag: 'hero_$i',
+          child: RepositoryCard(
+              index: i,
+              repositoryData: data[i],
+              cardAnimationDelay: _makeAnimationDelayForFirst5Cards(i))));
+    }
+    return cards;
+  }
+
+  int _makeAnimationDelayForFirst5Cards(int i) => i < 5 ? i * 100 : 0;
+
+  Column _buildFailureWidget() {
+    return const Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Icon(FontAwesomeIcons.triangleExclamation, size: 50),
+      Text('Error occured'),
+    ]);
+  }
+
+  List<Widget> get _loadingState =>
+      List.generate(5, (index) => const LoadingBorderRepositoryCard());
 }

@@ -1,15 +1,12 @@
 import 'package:common/constants/app_colors.dart';
 import 'package:common/constants/dim.dart';
-import 'package:common/get_it/get_it.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:main_viewer/src/application/issues_cubit/issues_cubit.dart';
 import 'package:main_viewer/src/domain/models/repository_data/repository_data.dart';
-import 'package:main_viewer/src/presentation/repository_details_screen/repository_details_screen.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/widgets/owner_avatar_and_login.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/widgets/programming_language_row.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/widgets/repository_card_animations_mixin.dart';
 import 'package:main_viewer/src/presentation/repository_search_screen/repository_card/widgets/stars_and_forks_stats.dart';
+import 'package:navigator/navigator.dart';
 
 class RepositoryCard extends StatelessWidget
     with RepositoryCardAnimationsMixin {
@@ -40,13 +37,7 @@ class RepositoryCard extends StatelessWidget
           side: BorderSide(
               color: hideBorder ? Colors.transparent : AppColors.border)),
       child: InkWell(
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => getIt<IssuesCubit>(
-                      param1: repositoryData.ownerName,
-                      param2: repositoryData.repositoryName),
-                  child: RepositoryDetailsScreen(index: index),
-                ))),
+        onTap: () => _navigateToRepositoryDetailsScreen(context),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -86,6 +77,20 @@ class RepositoryCard extends StatelessWidget
         ),
       ),
     );
+  }
+
+  void _navigateToRepositoryDetailsScreen(BuildContext context) {
+    AppRoutes.repositoryDetails(
+        repositoryData: RepositoryDetailsRouteData(
+      repositoryName: repositoryData.repositoryName,
+      programmingLanguage: repositoryData.programmingLanguage,
+      description: repositoryData.description,
+      stars: repositoryData.stars,
+      forks: repositoryData.forks,
+      ownerName: repositoryData.ownerName,
+      ownerAvatarUrl: repositoryData.ownerAvatarUrl,
+      cardIndex: index,
+    )).go(context);
   }
 
   Widget _buildRepositoryName() {

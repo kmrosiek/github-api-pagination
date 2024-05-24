@@ -1,8 +1,9 @@
+import 'package:common/get_it/get_it.dart';
 import 'package:common/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:github_viewer/injection.dart';
 import 'package:injectable/injectable.dart';
-import 'package:main_viewer/main_viewer.dart';
+import 'package:navigator/navigator.dart';
 
 void main() {
   configureApp();
@@ -20,10 +21,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'GitHub API',
       theme: AppTheme.lightTheme,
-      home: const RepositorySearchScreen(),
+      routerConfig: getIt<INavigator>().getRouter(),
     );
   }
 }

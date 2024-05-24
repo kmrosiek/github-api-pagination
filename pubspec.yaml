@@ -13,11 +13,15 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
+  go_router_navigator:
+    path: packages/go_router_navigator
   https_repository:
     path: packages/https_repository
   injectable: ^2.4.2
   main_viewer:
     path: packages/main_viewer
+  navigator:
+    path: packages/navigator
 
 dev_dependencies:
   flutter_lints: ^3.0.0

@@ -33,9 +33,14 @@ class RepositorySearchCubit extends Cubit<RepositorySearchState> {
     _searchOperation = CancelableOperation.fromFuture(
             _repositorySearch.fetch(searchPhrase: searchPhrase))
         .then((failureOrData) {
-      emit(state.copyWith(
-          dataFailureOrNothing: Some(failureOrData), isLoading: false));
+      emit(state.copyWith(dataOrFailure: failureOrData, isLoading: false));
       _searchOperation = null;
     });
+  }
+
+  @override
+  Future<void> close() {
+    _searchOperation?.cancel();
+    return super.close();
   }
 }

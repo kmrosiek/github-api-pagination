@@ -28,6 +28,7 @@ class IssuesCubit extends Cubit<IssuesState> {
     final (failureOrData, hasMoreToFetch) = await _issuesRepository.fetch(
         ownerLogin: ownerLogin, repositoryName: repositoryName);
 
+    if (isClosed) return;
     failureOrData.fold(
         (failure) =>
             emit(state.copyWith(maybeFailure: Some(failure), isLoading: false)),

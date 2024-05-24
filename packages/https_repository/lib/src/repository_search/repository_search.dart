@@ -9,6 +9,8 @@ class RepositorySearch implements IRepositorySearch {
   Future<Either<Failure, List<RepositoryData>>> fetch(
       {required String searchPhrase}) async {
     await Future.delayed(const Duration(milliseconds: 1500), () => 1);
-    return const Right([repositoryExample]);
+    return Right(
+        List.generate(searchPhrase.length, (i) => repositoryExample(i)));
+    //return const Left(Failure());
   }
 }

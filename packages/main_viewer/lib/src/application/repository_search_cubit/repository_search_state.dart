@@ -6,16 +6,14 @@ abstract class RepositorySearchState with _$RepositorySearchState {
   const factory RepositorySearchState({
     required bool isLoading,
     required bool notEnoughCharsToSearch,
-    required Option<Either<Failure, List<RepositoryData>>> dataFailureOrNothing,
+    required Either<Failure, List<RepositoryData>> dataOrFailure,
   }) = _RepositorySearchState;
 
   factory RepositorySearchState.initial() => const RepositorySearchState(
-      isLoading: false,
-      dataFailureOrNothing: None(),
-      notEnoughCharsToSearch: true);
+      isLoading: false, dataOrFailure: Right([]), notEnoughCharsToSearch: true);
 
-  Option<int> get noOfFoundReposOrNothing => dataFailureOrNothing.fold(
-      () => const None(),
-      (failureOrData) => failureOrData.fold(
-          (failure) => const None(), (data) => Some(data.length)));
+  Option<int> get noOfFoundReposOrNothing => notEnoughCharsToSearch || isLoading
+      ? const None()
+      : dataOrFailure.fold(
+          (failure) => const None(), (data) => Some(data.length));
 }
