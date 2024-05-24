@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:common/failure/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:main_viewer/src/domain/issue_data/issue_data.dart';
+import 'package:main_viewer/src/domain/models/issue_data/issue_data.dart';
 
 part 'issues_state.dart';
 part 'issues_cubit.freezed.dart';

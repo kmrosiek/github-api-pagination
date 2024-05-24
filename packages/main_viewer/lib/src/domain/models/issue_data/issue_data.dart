@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:main_viewer/src/domain/issue_data/issue_label.dart';
+import 'package:main_viewer/src/domain/models/issue_data/issue_label.dart';
 
 part 'issue_data.freezed.dart';
 

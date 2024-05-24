@@ -2,7 +2,7 @@ import 'package:common/constants/dim.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:main_viewer/src/application/issues_cubit/issues_cubit.dart';
-import 'package:main_viewer/src/domain/issue_data/issue_data.dart';
+import 'package:main_viewer/src/domain/models/issue_data/issue_data.dart';
 import 'package:main_viewer/src/presentation/repository_details_screen/widgets/issue_card.dart';
 
 class IssuesList extends StatelessWidget {

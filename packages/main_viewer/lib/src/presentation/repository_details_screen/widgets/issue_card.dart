@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:common/constants/dim.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:main_viewer/src/domain/issue_data/issue_data.dart';
+import 'package:main_viewer/src/domain/models/issue_data/issue_data.dart';
 
 class IssueCard extends StatelessWidget {
   const IssueCard({
