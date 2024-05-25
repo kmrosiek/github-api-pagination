@@ -4,6 +4,17 @@ Welcome to the GitHub Repository Viewer! This mobile app is written in Flutter a
 
 ![App Preview](readme_assets/app_preview.gif)
 
+## 📚 Table of Contents
+
+- [Features and Packages](#-features-and-packages)
+- [How to Run](#-how-to-run)
+- [Project Structure](#-project-structure)
+- [Navigation](#-navigation)
+- [Tests](#-tests)
+  - [Unit Tests](#unit-tests)
+  - [Integration Tests](#integration-tests)
+- [Known Bugs](#-known-bugs)
+
 ## 🌟 Features and Packages
 
 - 📄 **GitHub Issues Pagination**: Efficiently load and display issues with pagination.
