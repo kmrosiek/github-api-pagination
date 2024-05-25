@@ -14,7 +14,7 @@ class RepositorySearchTextField extends StatefulWidget {
 
 class _RepositorySearchTextFieldState extends State<RepositorySearchTextField> {
   final TextEditingController _searchController =
-      TextEditingController(text: 'hello');
+      TextEditingController(text: '');
   String? _lastSearchPhrase = "";
   Timer? _preventTooFrequentSearch;
   static const Duration _timeToWaitAfterKeyPressed =
