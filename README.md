@@ -96,7 +96,10 @@ melos test
 
 ### Integration Tests
 
-Integration tests are set up with the `patrol` package, currently configured for iOS. To run integration tests on a simulator:
+Integration tests are set up with the `patrol` package, currently configured for iOS.  
+![Patrol Test Preview](readme_assets/patrol_test_preview.gif)
+
+To run integration tests on a simulator:
 
 1. **Activate Patrol CLI**:
    ```bash

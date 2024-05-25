@@ -1,8 +1,9 @@
 import 'package:common/constants/dim.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:main_viewer/main_viewer.dart';
 import 'package:main_viewer/main_viewer_test_exports.dart';
+import 'package:main_viewer/src/application/issues_cubit/issues_cubit.dart';
+import 'package:main_viewer/src/domain/models/repository_data/repository_data.dart';
 import 'package:main_viewer/src/presentation/repository_details_screen/widgets/bloc_listener_for_error_message.dart';
 import 'package:main_viewer/src/presentation/repository_details_screen/widgets/issues_list.dart';
 import 'package:main_viewer/src/presentation/repository_details_screen/widgets/loading_indicator_and_retry_button.dart';

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:github_viewer/main.dart';
 import 'package:main_viewer/main_viewer_test_exports.dart';
@@ -26,6 +27,22 @@ void main() {
 
       // Verify RepositoryCard widgets appear
       expect(find.byType(RepositoryCard), findsWidgets);
+
+      // Tap on the first RepositoryCard
+      await $.tester.tap(find.byType(RepositoryCard).first);
+
+      // Wait for navigation to RepositoryDetailsScreen
+      await $.pumpAndSettle();
+
+      // Verify navigation to RepositoryDetailsScreen
+      expect(find.byType(RepositoryDetailsScreen), findsOneWidget);
+
+      // Verify more than one IssueCard widgets
+      expect(find.byType(IssueCard), findsWidgets);
+
+      // Pop back
+      await $.tester.tap(find.byIcon(Icons.arrow_back));
+      await $.pumpAndSettle();
     },
   );
 }
