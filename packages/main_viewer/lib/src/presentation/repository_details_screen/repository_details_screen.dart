@@ -1,7 +1,8 @@
 import 'package:common/get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:main_viewer/main_viewer.dart';
+import 'package:main_viewer/src/application/issues_cubit/issues_cubit.dart';
+import 'package:main_viewer/src/domain/models/repository_data/repository_data.dart';
 import 'package:main_viewer/src/presentation/repository_details_screen/repository_details_content.dart';
 import 'package:navigator/navigator.dart';
 

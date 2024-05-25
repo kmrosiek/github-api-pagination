@@ -4,8 +4,10 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:common/failure/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:main_viewer/main_viewer.dart';
 import 'package:main_viewer/src/application/issues_cubit/issues_cubit.dart';
+import 'package:main_viewer/src/domain/interfaces/i_issues_repository.dart';
+import 'package:main_viewer/src/domain/models/issue_data/issue_data.dart';
+import 'package:main_viewer/src/domain/models/issue_data/issue_label.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
