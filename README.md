@@ -32,19 +32,19 @@ Welcome to the GitHub Repository Viewer! This mobile app is written in Flutter a
 This app uses a monorepo structure managed by Melos.
 
 1. **Activate Melos**:
-   \`\`\`bash
+   ```bash
    dart pub global activate melos
-   \`\`\`
+   ```
 
 2. **Generate Files**:
-   \`\`\`bash
+   ```bash
    melos generate
-   \`\`\`
+   ```
 
 3. **Run the App**:
-   \`\`\`bash
+   ```bash
    flutter run --dart-define=GITHUB_API_TOKEN=your_github_token
-   \`\`\`
+   ```
 
 ## 🗂 Project Structure
 
@@ -79,23 +79,23 @@ Uses named routes with type-safe parameters.
 
 Blocs in this app are tested using the `bloc_test` package. Use Melos to run all tests:
 
-\`\`\`bash
+```bash
 melos test
-\`\`\`
+```
 
 ### Integration Tests
 
 Integration tests are set up using the `patrol` package (currently for iOS only). To run integration tests on a simulator:
 
 1. **Activate Patrol CLI**:
-   \`\`\`bash
+   ```bash
    dart pub global activate patrol_cli
-   \`\`\`
+   ```
 
 2. **Run Tests**:
-   \`\`\`bash
+   ```bash
    patrol test -t integration_test/app_test.dart
-   \`\`\`
+   ```
 
 For more information, visit the [Patrol documentation](https://patrol.leancode.co/getting-started).
 
