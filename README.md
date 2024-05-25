@@ -46,13 +46,16 @@ This project employs a monorepo structure managed by Melos, which ensures a clea
    ```bash
    dart pub global activate melos
    ```
-
-2. **Generate Files**:
+2. **Get dependencies**:
+   ```bash
+   melos bootstrap
+   ```
+3. **Generate Files**:
    ```bash
    melos generate
    ```
 
-3. **Run the App**:
+4. **Run the App**:
    ```bash
    flutter run --dart-define=GITHUB_API_TOKEN=your_github_token
    ```
